@@ -8,7 +8,7 @@ console.log(__dirname);
 console.log(__filename);
 
 console.log(path.join(__dirname, "/public"))
-
+const port = process.env.PORT || 3000;
 const app = express();
 
 
@@ -75,6 +75,6 @@ app.get('*', (req, res) => {
     res.send({error: 'Page not found.'})
 });
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
+app.listen(port, () => {
+    console.log('Server started on port ' + port);
 });
