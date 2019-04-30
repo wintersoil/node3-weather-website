@@ -36,7 +36,7 @@
                     messageTwo.textContent = data.error;
                 }
                 else
-                    messageOne.textContent = 'Temperature is ' + data.temperature + 'C Precipitation is ' + data.precipitation + ' Summary: ' + data.summary + ' Location: ' + data.area;
+                    messageOne.innerHTML = "Temperature is " + data.temperature + "°C<br> Precipitation is " + data.precipitation + "% chance<br> Summary: " + data.summary + "<br> Location: " + data.area;
             });
         });
 
