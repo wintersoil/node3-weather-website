@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+</head>
+<body style="font-family: arial">
+    <h2>Welcome to home using Express Javascipt</h2>
+    <h1>Rendering with HBS Engine</h1>
+    <p>name: {{name}} age: {{age}}</p>
+    <form>
+        <input placeholder="Location">
+        <button>Search</button>
+    </form>
+    <p id="message-1" style="background-color:lightgreen; color: purple"></p>
+    <p id="message-2"></p>
+
+
+    <script>
+
+        const formElement = document.querySelector('form');
+        const inputElement = document.querySelector('input');
+        const messageOne = document.querySelector('#message-1');
+        const messageTwo = document.querySelector('#message-2');
+        formElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const location = inputElement.value;
+            console.log(location)
+            messageOne.textContent = 'Loading Results';
+            messageTwo.textContent = '';
+            fetch('http://localhost:3000/weather/?address=' + location).then((response) =>{
+            response.json().then((data) => {
+                console.log(data);
+                if(data.error)
+                {
+                    messageTwo.textContent = data.error;
+                }
+                else
+                    messageOne.textContent = 'Temperature is ' + data.temperature + ' Precipitaion is ' + data.precipitation + ' Summary: ' + data.summary + ' Location: ' + data.area;
+            });
+        });
+
+        });
+    </script>
+</body>
+
+</html>
