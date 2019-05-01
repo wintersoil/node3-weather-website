@@ -25,6 +25,9 @@ const forecast = (latitude, longitude, callback) =>
                 twoDayAfterTempLow: body.daily.data[1].temperatureLow,
                 threeDayAfterTempHigh: body.daily.data[2].temperatureHigh,
                 threeDayAfterTempLow: body.daily.data[2].temperatureLow,
+                icon2: body.daily.data[0].icon,
+                icon3: body.daily.data[1].icon,
+                icon4: body.daily.data[2].icon,
             });
         }
     })

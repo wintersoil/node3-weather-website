@@ -67,15 +67,15 @@
                 }
                 else
                 {
-                    messageOne.innerHTML = "Temperature is " + data.temperature + "°C<br> Precipitation is " + data.precipitation + "% chance<br> Summary: " + data.summary + "<br> Location: " + data.area;
+                    messageOne.innerHTML = "Temperature is " + data.temperature + "°C<br> Precipitation is " + (data.precipitation*100) + "% chance<br> Summary: " + data.summary + "<br> Location: " + data.area;
                     cityName.textContent = data.area;
                     temperature.textContent = data.temperature + "°";
                     var d = new Date();
                     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-                    temperature2.innerHTML = days[(d.getDay() + 1)%7] + "<br>" + data.oneDayAfterTempHigh + "°    |    " + data.oneDayAfterTempLow + "°";
-                    temperature3.innerHTML = days[(d.getDay() + 2)%7] + "<br>" + data.twoDayAfterTempHigh + "°    |    " + data.twoDayAfterTempLow + "°";
-                    temperature4.innerHTML = days[(d.getDay() + 3)%7] + "<br>" + data.threeDayAfterTempHigh + "°    |    " + data.threeDayAfterTempLow + "°";
+                    temperature2.innerHTML = days[(d.getDay() + 1)%7] + "<br><img src='"+ icons[data.icon2] +"' width='100px' height='100px'/><br>" + data.oneDayAfterTempHigh + "°    |    " + data.oneDayAfterTempLow + "°";
+                    temperature3.innerHTML = days[(d.getDay() + 2)%7] + "<br><img src='"+ icons[data.icon3] +"' width='100px' height='100px'/><br>" + data.twoDayAfterTempHigh + "°    |    " + data.twoDayAfterTempLow + "°";
+                    temperature4.innerHTML = days[(d.getDay() + 3)%7] + "<br><img src='"+ icons[data.icon4] +"' width='100px' height='100px'/><br>" + data.threeDayAfterTempHigh + "°    |    " + data.threeDayAfterTempLow + "°";
                     var d = new Date();
                     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
