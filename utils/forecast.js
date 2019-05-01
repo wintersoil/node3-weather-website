@@ -18,6 +18,7 @@ const forecast = (latitude, longitude, callback) =>
                 summary: body.daily.data[0].summary,
                 temperature: body.currently.temperature,
                 precipitation: body.currently.precipProbability,
+                icon: body.currently.icon,
                 oneDayAfterTempHigh: body.daily.data[0].temperatureHigh,
                 oneDayAfterTempLow: body.daily.data[0].temperatureLow,
                 twoDayAfterTempHigh: body.daily.data[1].temperatureHigh,

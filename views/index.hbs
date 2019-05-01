@@ -2,17 +2,21 @@
 
 <head>
 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:100" rel="stylesheet">
+<style>
+    p {margin: 0 !important}
+</style>
 </head>
 <body style="font-family: 'Alegreya Sans'; background-color: rgb(123,176,219); color:white">
-    <div style="display:flex;align-self:center;text-align:center; justify-content: center;flex-wrap: wrap">
+    <div style="display:flex;text-align:center; justify-content: center;flex-wrap: wrap">
     <h2 style="flex-basis:100%">Weather data for city</h2>
         <form style="flex-basis: 100%">
         <input placeholder="Location" style="padding:8px; border: 2px solid #cccccc">
         <button style="padding:8px; border:1px solid #cccccc;cursor:pointer; background-color: #888888; color:white">Search</button>
     </form>
     <div style="height:70px; width:400px;flex-basis:100%"><h1 id="city-name"></h1></div>
-    <div style="height: 60px;" id="date"></div>
-    <div style="width:200px;height:200px;flex-basis:100%"><p id="temp" style="font-size:3em; font-weight:100; flex-basis:100%"></p></div>
+    <div style="height: 20px;flex-basis:100%" id="date"></div>
+    <img id="icon" width="0" height="0"/>
+    <div style="margin-bottom: 25px;width:200px;height:80px;flex-basis:100%;"><p id="temp" style="font-size:70px; font-weight:100; flex-basis:100%"></p></div>
 
     <div style="border-right:1px solid rgb(153, 196, 252); width:200px;height:200px;"><p id="temp2" style="font-size:1.2em; font-weight:100; flex-basis:100%"></p></div>
     <div style="border-right:1px solid rgb(153, 196, 252);width:200px;height:200px;"><p id="temp3" style="font-size:1.2em; font-weight:100; flex-basis:100%"></p></div>
@@ -34,6 +38,19 @@
         const temperature3 = document.querySelector('#temp3');
         const temperature4 = document.querySelector('#temp4');
         const dateNow =  document.querySelector('#date');
+        const iconly = document.querySelector('#icon');
+        const icons = {
+            "partly-cloudy-night" : "https://vectr.com/wintersoil/aX2HNYp7D.svg?width=200&height=200&select=aX2HNYp7Dpage0",
+            "clear-night": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Weather-clear-night.svg/480px-Weather-clear-night.svg.png",
+            "cloudy": "https://vectr.com/wintersoil/d1YahVCtg.svg?width=200&height=200&select=d1YahVCtgpage0",
+            "rain": "https://vectr.com/wintersoil/h329mdVsZ.svg?width=200&height=200&select=h329mdVsZpage0",
+            "snow": "https://vectr.com/wintersoil/botvumUlr.svg?width=200&height=200&select=botvumUlrpage0",
+            "wind": "https://vectr.com/wintersoil/a5DEdU2iU1.svg?width=200&height=200&select=a5DEdU2iU1page0",
+            "clear-day": "https://vectr.com/wintersoil/a1PujfHbZ3.svg?width=200&height=200&select=a1PujfHbZ3page0",
+            "partly-cloudy-day": "https://vectr.com/wintersoil/a1fvg1dKY6.svg?width=200&height=200&select=a1fvg1dKY6page0",
+            "fog": "https://vectr.com/wintersoil/mqRyQDq7Z.svg?width=200&height=200&select=mqRyQDq7Zpage0",
+
+        }
 
         formElement.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -63,6 +80,9 @@
                     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                     dateNow.textContent = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", 20" + d.getYear().toString().slice(1);
+                    iconly.setAttribute("src", icons[data.icon]);
+                    iconly.height = "200";
+                    iconly.width = "200";
                 }
             });
         });
@@ -72,3 +92,19 @@
 </body>
 
 </html>
+
+<!-- A machine-readable text summary of this data point, suitable for selecting an icon for display.
+If defined, this property will have one of the following values:
+
+clear-day, completed
+clear-night, completed
+rain, completed
+snow, completed
+sleet,
+wind, completed
+fog, completed
+cloudy, completed
+partly-cloudy-day,
+partly-cloudy-night. completed
+
+(Developers should ensure that a sensible default is defined, as additional values, such as hail, thunderstorm, or tornado, may be defined in the future.) -->
