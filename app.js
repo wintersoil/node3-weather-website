@@ -49,14 +49,14 @@ app.get('/weather', (req, res) => {
             }
             else
             {
-                forecast(latitude, longitude, (error, { summary, temperature, precipitation }) =>{
+                forecast(latitude, longitude, (error, { summary, temperature, precipitation, oneDayAfterTempLow, oneDayAfterTempHigh, twoDayAfterTempLow, twoDayAfterTempHigh, threeDayAfterTempLow, threeDayAfterTempHigh  }) =>{
                     if(error)
                     {
                         return res.send({ error })
                     }
                     else
                     {
-                        res.send({ summary, temperature, precipitation, location: req.query.address, area })
+                        res.send({ summary, temperature, precipitation, location: req.query.address, area, oneDayAfterTempLow, oneDayAfterTempHigh, twoDayAfterTempLow, twoDayAfterTempHigh, threeDayAfterTempLow, threeDayAfterTempHigh })
                     }
                 });
             }

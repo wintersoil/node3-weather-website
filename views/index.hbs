@@ -13,7 +13,11 @@
     <div style="height:70px; width:400px;flex-basis:100%"><h1 id="city-name"></h1></div>
     <div style="width:200px;height:200px;flex-basis:100%"><p id="temp" style="font-size:3em; font-weight:100; flex-basis:100%"></p></div>
 
-    <div style="padding:8px;width: 300px;color:white; border-radius: 8px; background-color:#FFB630;box-shadow: 0 1px 6px rgb(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24)"><p id="message-1" style="color: purple"></p></div>
+    <div style="border-right:1px solid rgb(153, 196, 252); width:200px;height:200px;"><p id="temp2" style="font-size:1.2em; font-weight:100; flex-basis:100%"></p></div>
+    <div style="border-right:1px solid rgb(153, 196, 252);width:200px;height:200px;"><p id="temp3" style="font-size:1.2em; font-weight:100; flex-basis:100%"></p></div>
+    <div style="width:200px;height:200px;"><p id="temp4" style="font-size:1.2em; font-weight:100; flex-basis:100%"></p></div>
+
+    <div style="margin-top: 15px;flex-basis:100%; padding:8px;width: 300px;color:white; border-radius: 8px; background-color:#FFB630;box-shadow: 0 1px 6px rgb(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.24)"><p id="message-1" style="color: purple"></p></div>
     <p  style="flex-basis: 100%" id="message-2"></p>
     </div>
 
@@ -25,6 +29,10 @@
         const messageTwo = document.querySelector('#message-2');
         const cityName = document.querySelector('#city-name');
         const temperature = document.querySelector('#temp');
+        const temperature2 = document.querySelector('#temp2');
+        const temperature3 = document.querySelector('#temp3');
+        const temperature4 = document.querySelector('#temp4');
+
         formElement.addEventListener('submit', (e) => {
             e.preventDefault();
             const location = inputElement.value;
@@ -43,6 +51,10 @@
                     messageOne.innerHTML = "Temperature is " + data.temperature + "°C<br> Precipitation is " + data.precipitation + "% chance<br> Summary: " + data.summary + "<br> Location: " + data.area;
                     cityName.textContent = data.area;
                     temperature.textContent = data.temperature + "°";
+                    temperature2.textContent = data.oneDayAfterTempHigh + "°    |    " + data.oneDayAfterTempLow + "°";
+                    temperature3.textContent = data.twoDayAfterTempHigh + "°    |    " + data.twoDayAfterTempLow + "°";
+                    temperature4.textContent = data.threeDayAfterTempHigh + "°    |    " + data.threeDayAfterTempLow + "°";
+
                 }
             });
         });

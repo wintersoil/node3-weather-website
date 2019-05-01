@@ -17,7 +17,13 @@ const forecast = (latitude, longitude, callback) =>
             callback(undefined, {
                 summary: body.daily.data[0].summary,
                 temperature: body.currently.temperature,
-                precipitation: body.currently.precipProbability
+                precipitation: body.currently.precipProbability,
+                oneDayAfterTempHigh: body.daily.data[0].temperatureHigh,
+                oneDayAfterTempLow: body.daily.data[0].temperatureLow,
+                twoDayAfterTempHigh: body.daily.data[1].temperatureHigh,
+                twoDayAfterTempLow: body.daily.data[1].temperatureLow,
+                threeDayAfterTempHigh: body.daily.data[2].temperatureHigh,
+                threeDayAfterTempLow: body.daily.data[2].temperatureLow,
             });
         }
     })
