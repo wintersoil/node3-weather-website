@@ -27,7 +27,6 @@
     </div>
 
     <script>
-        console.log("Hello");
         const formElement = document.querySelector('form');
         const inputElement = document.querySelector('input');
         const messageOne = document.querySelector('#message-1');
@@ -58,7 +57,6 @@
         formElement.addEventListener('submit', (e) => {
             e.preventDefault();
             const location = inputElement.value;
-            console.log(location)
             messageOne.textContent = 'Loading Results';
             messageTwo.textContent = '';
             fetch('/weather/?address=' + location).then((response) =>{
